@@ -84,7 +84,7 @@ class Config: NSObject, NSCoding {
         ]
         
         /* 2/3. Build the URL, Configure the request */
-        let request = NSMutableURLRequest(URL: appDelegate.tmdbURLFromParameters(methodParameters, withPathExtension: "/configuration"))
+        let request = NSMutableURLRequest(URL: appDelegate.tmdbURLFromParameters(methodParameters, withPathExension: "/configuration"))
    
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         

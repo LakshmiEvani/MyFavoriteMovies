@@ -12,10 +12,17 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var sharedSession = NSURLSession.sharedSession()
+    var requestToken: String? = nil
+    var sessionID: String? = nil
+    var userID: Int? = nil
+    var config = Config()
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        config.updateIfDaysSinceUpdateExceeds(7)
         return true
     }
 
@@ -40,7 +47,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
+   
 }
+
+// Mark: Create URL from Parameters
+    
+    extension AppDelegate {
+        
+        func tmdbURLFromParameters(parameters: [String:AnyObject], withPathExension: String? = nil) -> NSURL {
+            
+            let components = NSURLComponents()
+           components.scheme = Constants.TMDB.ApiScheme
+            components.host = Constants.TMDB.ApiHost
+            
+            components.path = Constants.TMDB.ApiPath + (withPathExension ?? "")
+            components.queryItems = [NSURLQueryItem]()
+            
+            for (key, value) in parameters {
+                let queryItem = NSURLQueryItem(name: key, value: "\(value)")
+                components.queryItems!.append(queryItem)
+            }
+            
+            return components.URL!
+            
+        }
+        
+    }
+    
+
 

@@ -50,7 +50,7 @@ class GenreTableViewController: UITableViewController {
         /* 2/3. Build the URL, Configure the request */
         
         
-        let request = NSMutableURLRequest(URL: appDelegate.tmdbURLFromParameters(methodParameters, withPathExtension: "/genre/\(genreID!)/movies"))
+        let request = NSMutableURLRequest(URL: appDelegate.tmdbURLFromParameters(methodParameters, withPathExension: "/genre/\(genreID!)/movies"))
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         /* 4. Make the request */

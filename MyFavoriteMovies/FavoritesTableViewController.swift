@@ -47,7 +47,7 @@ class FavoritesTableViewController: UITableViewController {
         
         /* 2/3. Build the URL, Configure the request */
         
-        let request = NSMutableURLRequest(URL: appDelegate.tmdbURLFromParameters(methodParameters, withPathExtension: "/account/\(appDelegate.userID!)/favoritmovies"))
+        let request = NSMutableURLRequest(URL: appDelegate.tmdbURLFromParameters(methodParameters, withPathExension: "/account/\(appDelegate.userID!)/favoritmovies"))
        
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         

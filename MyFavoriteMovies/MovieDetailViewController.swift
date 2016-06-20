@@ -53,7 +53,7 @@ class MovieDetailViewController: UIViewController {
             ]
             
             /* 2/3. Build the URL, Configure the request */
-            let request = NSMutableURLRequest(URL: appDelegate.tmdbURLFromParameters(methodParameters, withPathExtension: "/account/\(appDelegate.userID!)/favorite/movies"))
+            let request = NSMutableURLRequest(URL: appDelegate.tmdbURLFromParameters(methodParameters, withPathExension: "/account/\(appDelegate.userID!)/favorite/movies"))
             request.addValue("application/json", forHTTPHeaderField: "Accept")
             
             /* 4A. Make the request */
